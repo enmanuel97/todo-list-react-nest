@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { Tabs, Layout, Row, Col, List} from 'antd';
+import React from 'react';
+import { List } from 'antd';
 import TodoItem from './TodoItem';
 
-const TodoTab = ({todos, onTodoRemoval, onTodoToggle}) => {
+const TodoTab = ({todos, onRemoveTodo, onToggleTodoStatus}) => {
 	return (
 		<>
 			<List 
@@ -11,8 +11,8 @@ const TodoTab = ({todos, onTodoRemoval, onTodoToggle}) => {
 				renderItem={(todo) => (
 					<TodoItem
 						todo={todo}
-						onTodoRemoval={onTodoRemoval}
-						onTodoToggle={onTodoToggle}
+						onRemoveTodo={onRemoveTodo}
+						onToggleTodoStatus={onToggleTodoStatus}
 					/>
 				)}
 				pagination={{
@@ -21,7 +21,7 @@ const TodoTab = ({todos, onTodoRemoval, onTodoToggle}) => {
 				}}
 			/>
 		</>
-	)
+	);
 }
 
 export default TodoTab;

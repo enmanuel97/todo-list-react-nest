@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tooltip, Tag, List, Button, Popconfirm, Switch} from 'antd';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
-const TodoItem = ({ todo, onTodoToggle, onTodoRemoval}) => {
+const TodoItem = ({todo, onToggleTodoStatus, onRemoveTodo}) => {
 	return (
 		<List.Item
 			actions={[
@@ -11,19 +11,15 @@ const TodoItem = ({ todo, onTodoToggle, onTodoRemoval}) => {
 						checkedChildren={<CheckOutlined />}
 						unCheckedChildren={<CloseOutlined />}
 						defaultChecked={todo.completed}
-						onChange={() => onTodoToggle(todo)}
+						onChange={() => onToggleTodoStatus(todo)}
 					/>
 				</Tooltip>,
-				//<Tooltip title="Delete">
-					<Popconfirm
-						title="Are you sure you want to delete?"
-						onConfirm={() => onTodoRemoval(todo)}
-						// okText="Yes"
-						// cancelText="No"
-					>
-						<Button className="remove-todo-button" type="primary" danger> X </Button>
-					</Popconfirm>
-				//</Tooltip>,
+				<Popconfirm
+					title="Are you sure you want to delete?"
+					onConfirm={() => onRemoveTodo(todo)}
+				>
+					<Button className="remove-todo-button" type="primary" danger> X </Button>
+				</Popconfirm>
 			]}
 			className="list-item"
 			key={todo.id}
@@ -33,20 +29,6 @@ const TodoItem = ({ todo, onTodoToggle, onTodoRemoval}) => {
 					{todo.title}
 				</Tag>
 			</div>
-			{/* <List.Item.Meta	
-				title={
-					<span>
-						<Switch
-							checkedChildren={<CheckOutlined />}
-							unCheckedChildren={<CloseOutlined />}
-							checked={todo.completed}
-							onChange={() => onTodoToggle(todo.id)}
-						/>
-						<span style={{ marginLeft: '10px' }}>{todo.title}</span>
-					</span>
-				}
-				></List.Item.Meta> */}
-			{/* <Tag color={todo.completed ? 'green' : 'red'}>{todo.completed ? 'Completed' : 'Pending'}</Tag> */}
 		</List.Item>
 	);
 }

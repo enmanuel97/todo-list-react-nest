@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Col, Row, Input, Button, Checkbox } from 'antd';
+import { Form, Col, Row, Input, Button } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
 
 const TodoForm = ({onFormSubmit}) => {

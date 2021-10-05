@@ -1,4 +1,4 @@
-const baseUrl = 'localhost:8000/todo';
+const baseUrl = 'http://localhost:8000/todo';
 
 export const loadTodos = () => {
 	return fetch(baseUrl).then(response => response.json());
@@ -20,7 +20,7 @@ export const createTodo = (todo) => {
 
 export const updateTodo = (todo) => {
 	return fetch(`${baseUrl}/${todo.id}`, {
-		method: 'Patch',
+		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json'
 		},
